@@ -2,11 +2,8 @@ from datetime import datetime
 from functools import cache
 from typing import Final
 
-from pytz import timezone
-
 
 THOUSAND_SEPARATOR_MAP: Final = {",": ".", ".": ","}
-TZ: Final = timezone("America/Caracas")
 MONTHS = {
     1: "Ene",
     2: "Feb",

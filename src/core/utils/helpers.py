@@ -4,11 +4,9 @@ from datetime import datetime
 from typing import Any
 from uuid import uuid4
 
-from src.core.constants import TZ
-
 
 def datetime_now() -> datetime:
-    return datetime.now(tz=TZ)
+    return datetime.now()
 
 
 def randomized_name() -> str:

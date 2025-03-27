@@ -38,7 +38,7 @@ def _serialize(value: Any) -> str:
 
 
 # These functions are mainly used to serialize and deserialize JSON from the database
-# instead of using the default json.dumps and json.loads.
+# instead of using the default json.dumps and json.loads of SQLAlchemy and Python.
 def serialize_object(obj: Any) -> str:
     """Encodes a python object to a json string."""
 

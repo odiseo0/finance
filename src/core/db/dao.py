@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from contextlib import contextmanager
 from typing import Any, Generic, TypeVar, Unpack, cast
 
 from pydantic import BaseModel
@@ -10,7 +9,6 @@ from sqlalchemy import desc
 from sqlalchemy import func as sql_func
 from sqlalchemy import insert
 from sqlalchemy import update as sql_update
-from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import InstrumentedAttribute, RelationshipProperty, strategy_options
 from sqlalchemy.sql import Select, select
@@ -36,20 +34,13 @@ from src.core.utils.filters import (
     Search,
 )
 
+from .exceptions import catch_sqlalchemy_exception
 from .model import Base
 
 
 ModelType = TypeVar("ModelType", bound=Base)
 CreateSchema = TypeVar("CreateSchema", bound=BaseModel)
 UpdateSchema = TypeVar("UpdateSchema", bound=BaseModel)
-
-
-@contextmanager
-def catch_sqlalchemy_exception() -> Any:
-    try:
-        yield
-    except (IntegrityError, SQLAlchemyError) as e:
-        raise Exception from e
 
 
 class DAO(Generic[ModelType, CreateSchema, UpdateSchema]):
