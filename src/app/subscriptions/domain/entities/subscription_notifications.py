@@ -1,0 +1,35 @@
+from datetime import datetime
+from typing import TYPE_CHECKING
+
+from src.core.schema import BaseModel
+
+
+if TYPE_CHECKING:
+    from src.app.subscriptions.domain.entities.subscriptions import SubscriptionResponse
+
+
+class SubscriptionNotification(BaseModel):
+    subscription_id: int | None = None
+    notification_type: str | None = None
+    message: str | None = None
+    notification_date: datetime | None = None
+    is_read: bool | None = None
+
+
+class SubscriptionNotificationCreate(SubscriptionNotification):
+    subscription_id: int
+    notification_type: str
+    message: str
+    notification_date: datetime
+
+
+class SubscriptionNotificationUpdate(BaseModel):
+    notification_type: str | None = None
+    message: str | None = None
+    notification_date: datetime | None = None
+    is_read: bool | None = None
+
+
+class SubscriptionNotificationResponse(SubscriptionNotification):
+    id: int
+    subscription: "SubscriptionResponse" | None = None
