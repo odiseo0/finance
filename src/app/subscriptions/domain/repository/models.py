@@ -39,16 +39,16 @@ class BillingFrequency(enum.Enum):
 class SubscriptionCategory(enum.Enum):
     """Categories for classifying subscriptions"""
 
-    ENTERTAINMENT = "entertainment"  # Netflix, HBO, etc.
-    MUSIC = "music"  # Spotify, Apple Music, etc.
-    FITNESS = "fitness"  # Gym memberships, fitness apps
-    SOFTWARE = "software"  # Adobe, Microsoft, etc.
-    GAMING = "gaming"  # Xbox Game Pass, PlayStation Plus, etc.
-    NEWS = "news"  # News subscriptions, magazines
-    EDUCATION = "education"  # Online courses, learning platforms
-    FOOD = "food"  # Meal kits, food delivery services
-    STORAGE = "storage"  # Cloud storage, backup services
-    OTHER = "other"  # Miscellaneous subscriptions
+    ENTERTAINMENT = "entertainment"
+    MUSIC = "music"
+    FITNESS = "fitness"
+    SOFTWARE = "software"
+    GAMING = "gaming"
+    NEWS = "news"
+    EDUCATION = "education"
+    FOOD = "food"
+    STORAGE = "storage"
+    OTHER = "other"
 
 
 class SubscriptionStatus(enum.Enum):
@@ -91,7 +91,6 @@ class Subscription(MappedAsDataclass, Base, Date, kw_only=True):
         DateTime(timezone=True), nullable=True
     )
 
-    # Reminders
     remind_before_billing: Mapped[bool] = mapped_column(Boolean, default=True)
     reminder_days: Mapped[int] = mapped_column(
         Integer, default=3
@@ -100,14 +99,7 @@ class Subscription(MappedAsDataclass, Base, Date, kw_only=True):
     shared_with_family: Mapped[bool] = mapped_column(Boolean, default=False)
     family_members_count: Mapped[int | None] = mapped_column(nullable=True)
 
-    usage_frequency: Mapped[str | None] = mapped_column(
-        nullable=True
-    )  # daily, weekly, rarely, etc.
-    value_rating: Mapped[int | None] = mapped_column(
-        nullable=True
-    )  # 1-10 rating of value
-
-    notes: Mapped[str | None] = mapped_column(Text, nullable=True)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
     tags: Mapped[list[str] | None] = mapped_column(JSONB, nullable=True)
 
     account_email: Mapped[str | None] = mapped_column(nullable=True)
@@ -146,12 +138,10 @@ class SubscriptionPayment(MappedAsDataclass, Base, Date, kw_only=True):
     transaction_id: Mapped[int | None] = mapped_column(nullable=True)
     amount: Mapped[Decimal] = mapped_column(Numeric(precision=19, scale=8))
     payment_date: Mapped[datetime] = mapped_column(DateTime(timezone=True))
-
     expected_amount: Mapped[Decimal | None] = mapped_column(
         Numeric(precision=19, scale=2), nullable=True
     )
     price_change: Mapped[bool] = mapped_column(Boolean, default=False)
-
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     subscription: Mapped["Subscription"] = relationship(

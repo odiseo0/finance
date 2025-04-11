@@ -1,13 +1,7 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import TYPE_CHECKING
 
 from src.core.schema import BaseModel
-
-
-if TYPE_CHECKING:
-    from src.app.subscriptions.domain.entities.subscriptions import SubscriptionResponse
-    from src.app.transactions.domain.entities import TransactionResponse
 
 
 class SubscriptionPayment(BaseModel):
@@ -37,5 +31,3 @@ class SubscriptionPaymentUpdate(BaseModel):
 
 class SubscriptionPaymentResponse(SubscriptionPayment):
     id: int
-    subscription: "SubscriptionResponse" | None = None
-    transaction: "TransactionResponse" | None = None

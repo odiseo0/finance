@@ -1,11 +1,6 @@
 from datetime import datetime
-from typing import TYPE_CHECKING
 
 from src.core.schema import BaseModel
-
-
-if TYPE_CHECKING:
-    from src.app.subscriptions.domain.entities.subscriptions import SubscriptionResponse
 
 
 class SubscriptionNotification(BaseModel):
@@ -32,4 +27,3 @@ class SubscriptionNotificationUpdate(BaseModel):
 
 class SubscriptionNotificationResponse(SubscriptionNotification):
     id: int
-    subscription: "SubscriptionResponse" | None = None
