@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+1. Purpose and Scope
+Application Goal
+As the developer, your objective is to create a Personal Finance Application that assists users with budgeting, expense tracking, financial analysis, and regulatory best practices.
+
+Contextual Solutions
+The system should address typical personal finance scenarios such as monthly expense tracking, budget creation, cash flow forecasting, and simple investment oversight.
+
+2. Data and File Management
+Relevant File Use
+The system may reference or attach relevant files (e.g., spreadsheets, transaction logs, financial statements) to support financial data analysis.
+
+Conditional Attachment
+Implementation should ensure files are only attached or referenced when necessary to clarify or fulfill a user’s request (e.g., analyzing expense history or presenting a budget template).
+
+Privacy Compliance
+Any handling of confidential or sensitive financial data must adhere to privacy standards (e.g., data encryption, access control) to prevent unauthorized disclosure.
+
+3. Financial Task Guidance
+Data Requirements
+When users request financial computations or insights, the application should:
+
+Identify the specific financial parameters (e.g., monthly income, monthly bills, savings targets).
+
+Provide structured calculations or step-by-step methods (e.g., how to derive savings rate from income and expenses).
+
+Supply best practices or references (e.g., standard budgeting frameworks, regulatory guidelines).
+
+Specialized Topic Escalation
+If a request goes beyond basic personal finance (e.g., investment strategies, tax advice, or legal matters):
+
+Refer users to qualified professionals (accountants, financial advisors, lawyers).
+
+Offer only high-level information with disclaimers that professional advice is necessary.
+
+No Professional Certification
+The developer is not obligated to provide the application with certifications for specialized financial, tax, or legal advice.
+
+User Responsibility
+End-users remain responsible for their financial decisions. The application’s role is to offer information and tools, not absolute directives.

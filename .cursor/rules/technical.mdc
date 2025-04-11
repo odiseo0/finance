@@ -1,0 +1,57 @@
+---
+description: 
+globs: **/*
+alwaysApply: false
+---
+# Technical Guidelines
+
+## Project Structure
+
+```src/```
+The main source code directory containing the core application components.
+
+## Core Components
+
+### ```src/core/```
+Core functionality and shared utilities
+- ```aws/``` - AWS related functionality
+- ```schema/``` - Schema definitions
+- ```db/``` - Database related code
+- ```types/``` - Type definitions
+- ```utils/``` - Utility functions
+- ```services/``` - Core services
+- ```security/``` - Security related code
+- ```middlewares/``` - Middleware components
+- ```constants.py``` - Application constants
+
+### ```src/app/```
+Main application modules
+- ```api.py``` - Main API endpoints
+- ```transactions/``` - Transaction management
+- ```subscriptions/``` - Subscription handling
+- ```news/``` - News and updates
+- ```investments/``` - Investment tracking
+- ```goals/``` - Financial goals
+- ```budgets/``` - Budget management
+- ```banks/``` - Banking integrations
+
+### ```src/settings/```
+Application configuration
+- ```api_settings.py``` - API configuration
+- ```db_settings.py``` - Database configuration
+
+## Main Files
+- ```applicacion.py``` - Main application entry point
+- ```__init__.py``` - Package initialization
+
+## Technology Stack
+- **Pydantic** - Data validation and serialization
+- **Litestar** - API framework with Pydantic integration
+- **SQLAlchemy** - Database ORM (v2.0)
+  - Using Alembic for migrations
+  - asyncpg as PostgreSQL driver
+  - Async implementation
+- **Asyncpg** as the PostgreSQL drive
+- **httpx** for making network requests
+
+
