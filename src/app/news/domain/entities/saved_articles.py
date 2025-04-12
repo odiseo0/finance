@@ -1,13 +1,6 @@
 from datetime import datetime
-from typing import TYPE_CHECKING
 
 from src.core.schema import BaseModel
-
-
-if TYPE_CHECKING:
-    from src.app.news.domain.entities.newsletter_subscriptions import (
-        NewsletterSubscriptionResponse,
-    )
 
 
 class SavedArticle(BaseModel):
@@ -39,4 +32,3 @@ class SavedArticleUpdate(BaseModel):
 
 class SavedArticleResponse(SavedArticle):
     id: int
-    subscription: "NewsletterSubscriptionResponse" | None = None

@@ -222,8 +222,6 @@ class Investment(MappedAsDataclass, Base, Date, kw_only=True):
 class InvestmentTransaction(MappedAsDataclass, Base, Date, kw_only=True):
     """Junction table linking investments to transactions"""
 
-    __tablename__ = "investment_transactions"
-
     investment_id: Mapped[int] = mapped_column(
         BigInteger, ForeignKey("investments.id", ondelete="CASCADE"), primary_key=True
     )

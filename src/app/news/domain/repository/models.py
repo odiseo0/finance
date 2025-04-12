@@ -16,7 +16,7 @@ class NewsSource(MappedAsDataclass, Base, Date, kw_only=True):
     url: Mapped[str]
     description: Mapped[str | None] = mapped_column(Text)
     logo_url: Mapped[str | None]
-    category: Mapped[str]  # e.g., "markets", "personal finance", "cryptocurrency"
+    category: Mapped[str]
 
     subscriptions: Mapped[list["NewsletterSubscription"]] = relationship(
         "NewsletterSubscription",
@@ -33,7 +33,7 @@ class NewsletterSubscription(MappedAsDataclass, Base, Date, kw_only=True):
         BigInteger, ForeignKey("news_sources.id", ondelete="CASCADE")
     )
     email: Mapped[str]
-    frequency: Mapped[str]  # e.g., "daily", "weekly", "monthly"
+    frequency: Mapped[str]
     last_received: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
@@ -46,9 +46,7 @@ class NewsletterSubscription(MappedAsDataclass, Base, Date, kw_only=True):
         "NewsSource",
         back_populates="subscriptions",
     )
-    content_preferences: Mapped[dict | None] = mapped_column(
-        JSONB, nullable=True
-    )  # User preferences for content
+    content_preferences: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
 
 
 class SavedArticle(MappedAsDataclass, Base, Date, kw_only=True):
